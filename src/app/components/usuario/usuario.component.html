@@ -1,0 +1,156 @@
+<!-- Mensaje de bienvenida y botón cerrar sesión -->
+<div *ngIf="usuarioActual" class="mt-5 text-center">
+  <h2 class="mb-4 fw-bold" style="color: #ff6f00;">Bienvenido, {{ usuarioActual }}</h2>
+  <button class="btn btn-outline-light custom-btn" (click)="cerrarSesion()">
+    <i class='bx bx-log-out me-2'></i> Cerrar sesión
+  </button>
+</div>
+
+<div class="container">
+  <div class="titulo-container" *ngIf="!usuarioActual">
+    <h1>Iniciar Sesión</h1>
+  </div>
+
+  <!-- Login por FormGroup (oculto si ya inició sesión) -->
+  <form *ngIf="!usuarioActual" [formGroup]="cuentaForm" (ngSubmit)="guardar()">
+    <div class="form-group">
+      <label for="nombre"><i class='bx bx-user'></i> Nombre</label>
+      <input id="nombre" formControlName="nombre" class="form-control" type="text" />
+    </div>
+
+    <div class="form-group">
+      <label for="usuario"><i class='bx bx-id-card'></i> Usuario</label>
+      <input id="usuario" formControlName="usuario" class="form-control" type="text" />
+    </div>
+
+    <div class="form-group">
+      <label for="correo"><i class='bx bx-envelope'></i> Correo</label>
+      <input id="correo" formControlName="correo" class="form-control" type="email" />
+    </div>
+
+    <div class="form-group">
+      <label for="contrasena"><i class='bx bx-lock-alt'></i> Contraseña</label>
+      <input id="contrasena" formControlName="contrasena" class="form-control" type="password" />
+    </div>
+
+    <button type="submit" class="btn btn-dark mt-3">
+      <i class='bx bx-log-in me-2' style="color: white;"></i> Ingresar
+    </button>
+  </form>
+
+
+  <!-- Formulario por Template -->
+  <div *ngIf="usuarioActual" class="mt-5">
+
+    <div class="titulo-container">
+      <h1 class="text-center">Agendar sesión</h1>
+    </div>
+
+    <form #formTemplate="ngForm" (ngSubmit)="guardarTemplate(formTemplate)">
+      <div class="form-group">
+        <label for="nombreT"><i class='bx bx-user'></i> Clase a tomar</label>
+        <select id="nombreT" name="nombre" ngModel class="form-control" required>
+          <option value="" disabled selected>Selecciona una clase</option>
+          <option value="pesas">Indoor Cycling</option>
+          <option value="crosfit">Crosfit</option>
+          <option value="zumba">Zumba</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="usuarioT"><i class='bx bx-calendar'></i> Día</label>
+        <input id="usuarioT" name="usuario" ngModel class="form-control" type="date" [min]="hoy"
+          (change)="validarDia($event)" required />
+      </div>
+
+
+      <div class="form-group">
+        <label for="horaT">
+          <i class='bx bx-time' style="color: orange;"></i> Hora
+        </label>
+        <input id="horaT" name="hora" ngModel class="form-control" type="time" [min]="horaMin" [max]="horaMax"
+          required />
+      </div>
+
+<p><strong>Sesiones:</strong> {{ resumen.sesiones > 0 ? resumen.sesiones : 'Sin Sesión' }}</p>
+
+<div class="form-group">
+  <label><i class="fas fa-calendar-check"></i> Número de sesiones</label>
+  <br>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="sesion1" value="1" name="sesiones"
+      [(ngModel)]="checkboxValues[0]" (change)="actualizarSesiones()">
+    <label class="form-check-label" for="sesion1">1</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="sesion2" value="2" name="sesiones"
+      [(ngModel)]="checkboxValues[1]" (change)="actualizarSesiones()">
+    <label class="form-check-label" for="sesion2">2</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="sesion3" value="3" name="sesiones"
+      [(ngModel)]="checkboxValues[2]" (change)="actualizarSesiones()">
+    <label class="form-check-label" for="sesion3">3</label>
+  </div>
+</div>
+
+
+      <button type="button" class="btn mt-2 text-white" style="background-color: #ff6f00; border-color: #ff6f00;"
+        (click)="mostrarResumen()">
+        <i class='bx bx-show'></i> {{ resumenVisible ? 'Ocultar resumen' : 'Ver resumen' }}
+      </button>
+
+      <!-- Sección de resumen -->
+      @if (resumenVisible) {
+      <div class="alert alert-info mt-3">
+        <h5>Resumen de la sesión:</h5>
+        <p><strong>Clase:</strong> {{ resumen.nombre }}</p>
+        <p><strong>Día:</strong> {{ resumen.usuario }}</p>
+        <p><strong>Hora:</strong> {{ resumen.hora }}</p>
+<p><strong>Sesiones:</strong> {{ resumen.sesiones === true ? 'Sesión Activa' : 'Sin Sesión' }}</p>
+      </div>
+      }
+
+
+    </form>
+  </div>
+
+
+
+
+
+
+
+  <!-- Tabla de sesiones agendadas -->
+  <div *ngIf="usuarioActual && resumenVisible && resumen" class="mt-4">
+    <h4>Sesiones Agendadas</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Clase</th>
+          <th>Día</th>
+          <th>Hora</th>
+          <th>Sesiones</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ resumen.nombre }}</td>
+          <td>{{ resumen.usuario }}</td>
+          <td>{{ resumen.hora }}</td>
+          <td>{{ resumen.sesiones }}</td>
+          <td>
+            <button class="btn btn-warning btn-sm" (click)="editarSesion()">
+              <i class='bx bx-edit'></i> Editar
+            </button>
+            <button class="btn btn-danger btn-sm" (click)="eliminarSesion()">
+              <i class='bx bx-trash'></i> Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

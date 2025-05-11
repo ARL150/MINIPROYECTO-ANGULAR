@@ -1,0 +1,12 @@
+table {
+    width: 100%;
+  }
+  
+  th.mat-header-cell {
+    font-weight: bold;
+  }
+  
+  mat-card {
+    padding: 16px;
+  }
+  
