@@ -17,7 +17,7 @@ export const routes: Routes = [
     { path: 'servicio', component: ServiciosComponent},
     { path: 'responsables', component: ResponsablesComponent},
     { path: 'form', component: FormComponent },  
-    { path: 'redes', component: RedesComponent},  
+    { path: 'redes/:id', component: RedesComponent},  
     { path: 'nosotros', component: NosotrosComponent},
     { path: 'footer', component: FooterComponent},
     { path: 'ejercicios', component: EjerciciosComponent},

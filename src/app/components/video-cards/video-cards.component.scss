@@ -9,6 +9,8 @@
   box-shadow: 0 0 10px rgba(255, 167, 38, 0.3);
 }
 
+
+
 .title {
   font-size: 2rem;
   margin-bottom: 0.5rem;
@@ -42,8 +44,8 @@
 .video-card iframe {
   display: block;
   border: none;
-  width: 100%;  /* Asegura que el iframe ocupe el 100% del contenedor */
-  height: 100%; /* Asegura que el iframe se ajuste al contenedor */
+  width: 100%;  
+  height: 100%; 
 }
 
 .video-card:hover {
@@ -96,11 +98,11 @@ $shadow-color: rgba(0, 0, 0, 0.3);
 
   .video-grid {
     padding: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Reduce el tamaño mínimo para pantallas más pequeñas */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
   }
 
   .video-card iframe {
-    height: 180px; /* Ajusta el alto del iframe en pantallas pequeñas */
+    height: 180px; 
   }
 }
 
@@ -119,10 +121,78 @@ $shadow-color: rgba(0, 0, 0, 0.3);
   }
 
   .video-grid {
-    grid-template-columns: 1fr; /* Acomoda los videos en una sola columna */
+    grid-template-columns: 1fr; 
   }
 
   .video-card iframe {
-    height: 150px; /* Ajusta el alto del iframe en pantallas extra pequeñas */
+    height: 150px; 
   }
 }
+
+.video-filter {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 15px; 
+}
+
+.label {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff7f00; 
+  margin-bottom: 10px; 
+  text-transform: uppercase;
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 14px;
+  border-radius: 30px;
+  background-color: #ff6600;
+  color: white;
+  text-transform: capitalize; 
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+button:hover {
+  background-color: #ff6600; 
+  transform: translateY(-3px); 
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 127, 0, 0.4); 
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 20px; 
+  justify-items: center; 
+  margin-top: 20px; 
+}
+
+.video-card {
+  width: 100%;
+  max-width: 560px; 
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+iframe {
+  border-radius: 6px; 
+}
+
+

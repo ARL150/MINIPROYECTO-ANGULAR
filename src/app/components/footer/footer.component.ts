@@ -14,6 +14,6 @@ export class FooterComponent {
   
   constructor() {
     const fechaActual = new Date();
-    this.date = fechaActual.getFullYear().toString(); // Solo el año
+    this.date = fechaActual.getFullYear().toString(); 
   }
 }

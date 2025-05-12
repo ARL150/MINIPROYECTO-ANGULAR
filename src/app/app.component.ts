@@ -11,13 +11,14 @@ import { ResponsablesComponent } from './components/responsables/responsables.co
 import { MatCardModule } from '@angular/material/card';
 import { VideoCardsComponent } from './components/video-cards/video-cards.component';
 import { EjerciciosComponent } from './components/ejercicios/ejercicios.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, NavbarComponent, CarruselComponent, 
     FooterComponent, RouterModule, UbicacionComponent, NosotrosComponent, 
     ServiciosComponent, RedesComponent,ResponsablesComponent, MatCardModule, 
-    VideoCardsComponent, EjerciciosComponent],
+    VideoCardsComponent, EjerciciosComponent, DashboardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

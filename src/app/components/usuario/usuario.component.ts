@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { NgForm } from '@angular/forms';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-form',
@@ -15,10 +16,12 @@ import { NgForm } from '@angular/forms';
 export class FormComponent implements OnInit {
   cuentaForm: FormGroup;
   mensaje: string = '';
-  usuarioActual: string | null = null;
   hoy: string = '';
   horaMin = '06:00';
   horaMax = '23:00';
+
+  @Input() usuarioActual: string | null = null;
+
 
   clases: { valor: string, nombre: string }[] = [
   { valor: 'pesas', nombre: 'Indoor Cycling' },
@@ -108,6 +111,8 @@ ngAfterViewInit() {
 
 
   ngOnInit() {
+        console.log('Usuario recibido:', this.usuarioActual);
+
   const hoy = new Date();
   this.hoy = hoy.toISOString().split('T')[0]; 
   this.usuarioActual = localStorage.getItem('usuarioActual');
@@ -247,7 +252,6 @@ editarSesion() {
   }
 }
 
-
 eliminarSesion() {
   Swal.fire({
     title: '¿Estás seguro?',
@@ -269,7 +273,6 @@ eliminarSesion() {
   });
 }
 
-
   cerrarSesion() {
     localStorage.removeItem('usuarioActual');
     localStorage.removeItem('formTemplateData');  
@@ -284,7 +287,7 @@ eliminarSesion() {
       confirmButtonColor: '#3085d6'
     });
 
-    this.router.navigate(['titulo-container']);  // Redirige a la ruta de login
+    this.router.navigate(['titulo-container']);  
   }
 
   resumenVisible = false;

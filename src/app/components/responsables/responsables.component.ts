@@ -10,7 +10,6 @@ import { CommonModule } from '@angular/common';
 })
 export class ResponsablesComponent {
   
-  // Estilos por defecto para cada uno
   defaultStyleAbraham = {
     'background-color': '#333333', 
     'color': '#ffffff', 
@@ -32,9 +31,8 @@ export class ResponsablesComponent {
     'transition': 'transform 0.3s ease, background-color 0.3s ease'
   };
 
-  // Estilos cuando se pasa el mouse (hover) para cada uno
   hoverStyleAbraham = {
-    'background-color': '#f39c12', // Naranja
+    'background-color': '#f39c12', 
     'color': '#333333',
     'transform': 'scale(1.05)',
     'transition': 'transform 0.3s ease, background-color 0.3s ease'
@@ -54,12 +52,10 @@ export class ResponsablesComponent {
     'transition': 'transform 0.3s ease, background-color 0.3s ease'
   };
 
-  // Variables para controlar los estilos activos de cada uno
   currentStyleAbraham = this.defaultStyleAbraham;
   currentStylePepe = this.defaultStylePepe;
   currentStyleLuis = this.defaultStyleLuis;
 
-  // Métodos para manejar el hover en cada uno de los elementos
   onMouseEnterAbraham() {
     this.currentStyleAbraham = this.hoverStyleAbraham;
   }

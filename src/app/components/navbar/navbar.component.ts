@@ -20,10 +20,13 @@ export class NavbarComponent implements AfterViewInit, OnInit {
   constructor(private authService: AuthServiceService) {}  
 
   ngOnInit() {
+    this.usuarioActual = localStorage.getItem('usuarioActual');
+
     this.authService.usuarioActual$.subscribe(usuario => {
       this.usuarioActual = usuario;
     });
   }
+
 
   ngAfterViewInit(): void {}
 
@@ -45,6 +48,6 @@ export class NavbarComponent implements AfterViewInit, OnInit {
   }
 
   cerrarSesion() {
-    this.authService.logout(); // ✅ Usamos el servicio para cerrar sesión correctamente
+    this.authService.logout(); 
   }
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
@@ -7,13 +8,16 @@ import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-redes',
   standalone: true,
-  imports: [MatCardModule, MatIconModule, MatDividerModule, NgIf],
+  imports: [MatCardModule, MatIconModule, MatDividerModule],
   templateUrl: './redes.component.html',
-  styleUrl: './redes.component.css'
+  styleUrls: ['./redes.component.css']
 })
-export class RedesComponent {
+export class RedesComponent implements OnInit {
+  public socialId: string = "";
 
+  constructor(private route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    this.socialId = this.route.snapshot.paramMap.get('id')!;
+  }
 }
-
-
-
