@@ -15,13 +15,14 @@ import { CommonModule } from '@angular/common';
 
 export class CarruselComponent {
   currentIndex: number = 0;
+
   images = [
-    { src: '../img/CARRUSEL/1.png' },
-    { src: '../img/CARRUSEL/2.png' },
-    { src: '../img/CARRUSEL/3.png' },
-    { src: '../img/CARRUSEL/4.png' },
-    { src: '../img/CARRUSEL/5.png' },
-    { src: '../img/CARRUSEL/6.png' }
+    { src: 'img/CARRUSEL/1.png' },
+    { src: 'img/CARRUSEL/2.png' },
+    { src: 'img/CARRUSEL/3.png' },
+    { src: 'img/CARRUSEL/4.png' },
+    { src: 'img/CARRUSEL/5.png' },
+    { src: 'img/CARRUSEL/6.png' }
   ]
 
 
