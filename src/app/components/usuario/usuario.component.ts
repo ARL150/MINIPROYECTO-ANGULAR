@@ -20,25 +20,27 @@ export class FormComponent implements OnInit {
   horaMin = '06:00';
   horaMax = '23:00';
 
-  checkboxValues = [false, false, false]; // Para sesiones 1, 2, 3
-  sesionesSeleccionadas: number[] = [];   // Guardará los valores elegidos
+  clases: { valor: string, nombre: string }[] = [
+  { valor: 'pesas', nombre: 'Indoor Cycling' },
+  { valor: 'crosfit', nombre: 'Crosfit' },
+  { valor: 'zumba', nombre: 'Zumba' }
+];
+
+
+  checkboxValues = [false, false, false]; 
+  sesionesSeleccionadas: number[] = [];   
 
 actualizarSesiones() {
-  // Limpiamos las sesiones seleccionadas
   this.sesionesSeleccionadas = [];
-// En tu componente (por ejemplo, en Angular)
-this.resumen.sesiones = 10; // O el valor adecuado, asegúrate de que no sea un booleano
+this.resumen.sesiones = 10; 
     this.resumen.sesiones = this.checkboxValues.filter(value => value).length;
 
-  // Iteramos sobre los valores de los checkboxes
   this.checkboxValues.forEach((valor, index) => {
     if (valor) {
-      // Si el checkbox está marcado, agregamos su valor (index + 1) a sesionesSeleccionadas
       this.sesionesSeleccionadas.push(index + 1);
     }
   });
 
-  // Verificamos si hay más de una sesión seleccionada
   if (this.sesionesSeleccionadas.length > 1) {
     Swal.fire({
       icon: 'warning',
@@ -47,17 +49,12 @@ this.resumen.sesiones = 10; // O el valor adecuado, asegúrate de que no sea un 
       confirmButtonColor: '#d33'
     });
 
-    // Restablecemos los valores de los checkboxes
     this.checkboxValues = [false, false, false];
-    this.sesionesSeleccionadas = []; // Limpiamos la selección
-
+    this.sesionesSeleccionadas = []; 
   } else if (this.sesionesSeleccionadas.length === 1) {
-    // Si solo hay una sesión seleccionada, lo guardamos correctamente
-    this.checkboxValues = [false, false, false]; // Reseteamos
-    this.checkboxValues[this.sesionesSeleccionadas[0] - 1] = true; // Marcamos el checkbox correspondiente
+    this.checkboxValues = [false, false, false]; 
+    this.checkboxValues[this.sesionesSeleccionadas[0] - 1] = true; 
   }
-  
-  // Almacenamos los valores en localStorage
   localStorage.setItem('sesionesSeleccionadas', JSON.stringify(this.sesionesSeleccionadas));
 }
 
@@ -78,13 +75,11 @@ this.resumen.sesiones = 10; // O el valor adecuado, asegúrate de que no sea un 
     contrasena: ['', Validators.required]
   });
 
-  // Recuperamos los datos de la última sesión guardada
   const ultimaSesion = localStorage.getItem('ultimaSesion');
   if (ultimaSesion) {
     const datos = JSON.parse(ultimaSesion);
-    this.resumen = datos; // Asignamos los datos al resumen
+    this.resumen = datos; 
 
-    // Asignar los valores recuperados al formulario
     this.formTemplate.setValue({
       nombre: datos.nombre,
       usuario: datos.usuario,
@@ -92,7 +87,6 @@ this.resumen.sesiones = 10; // O el valor adecuado, asegúrate de que no sea un 
       sesiones: datos.sesiones
     });
 
-    // Aseguramos que el resumen se vea si se ha recuperado una sesión
     this.resumenVisible = true;
   }
 }
@@ -115,18 +109,15 @@ ngAfterViewInit() {
 
   ngOnInit() {
   const hoy = new Date();
-  this.hoy = hoy.toISOString().split('T')[0]; // YYYY-MM-DD
-  // Verificamos si el usuario está logueado
+  this.hoy = hoy.toISOString().split('T')[0]; 
   this.usuarioActual = localStorage.getItem('usuarioActual');
   if (this.usuarioActual) {
-    // Intentamos cargar los datos de la última sesión agendada desde localStorage
     const savedSession = localStorage.getItem('formTemplateData');
     if (savedSession) {
       this.resumen = JSON.parse(savedSession);
-      this.resumenVisible = true; // Mostramos automáticamente el resumen
+      this.resumenVisible = true; 
     }
     
-    // Recuperamos las sesiones seleccionadas desde localStorage
     const sesionesGuardadas = localStorage.getItem('sesionesSeleccionadas');
     if (sesionesGuardadas) {
       this.sesionesSeleccionadas = JSON.parse(sesionesGuardadas);
@@ -138,19 +129,14 @@ ngAfterViewInit() {
   }
 }
 
-
-
 actualizarHoraSegunDia(fecha: string) {
-  const dia = new Date(fecha).getDay(); // 0: Domingo, ..., 6: Sábado
+  const dia = new Date(fecha).getDay(); 
 
   if (dia === 6) {
-    // Sábado
     this.horaMax = '14:00';
   } else if (dia >= 1 && dia <= 5) {
-    // Lunes a Viernes
     this.horaMax = '23:00';
   } else {
-    // Domingo
     this.horaMin = '';
     this.horaMax = '';
   }
@@ -183,7 +169,7 @@ guardar() {
     if (adminValido) {
       localStorage.setItem('usuarioActual', usuario);
       this.usuarioActual = usuario;
-      this.mostrarFormularioTemplate = true; // Mostrar el formulario de agendar sesión
+      this.mostrarFormularioTemplate = true; 
 
       Swal.fire({
         icon: 'success',
@@ -214,7 +200,6 @@ guardar() {
   
   guardarTemplate(form: NgForm) {
   if (form.valid) {
-    // Guardar los datos en el localStorage
     const datosFormulario = {
       nombre: form.value.nombre,
       usuario: form.value.usuario,
@@ -222,7 +207,7 @@ guardar() {
       sesiones: form.value.sesiones
     };
     
-    localStorage.setItem('ultimaSesion', JSON.stringify(datosFormulario)); // Guardamos en el localStorage
+    localStorage.setItem('ultimaSesion', JSON.stringify(datosFormulario)); 
 
     Swal.fire({
       icon: 'success',
@@ -231,7 +216,7 @@ guardar() {
       confirmButtonColor: '#3085d6'
     });
 
-    form.reset(); // Limpiar formulario
+    form.reset(); 
   } else {
     Swal.fire({
       icon: 'warning',
@@ -275,6 +260,8 @@ eliminarSesion() {
   }).then((result) => {
     if (result.isConfirmed) {
       localStorage.removeItem('ultimaSesion');
+      localStorage.removeItem('sesionesSeleccionadas'); 
+
       this.resumen = {};
       this.resumenVisible = false;
       Swal.fire('Eliminado', 'La sesión ha sido eliminada.', 'success');

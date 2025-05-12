@@ -47,15 +47,17 @@
     </div>
 
     <form #formTemplate="ngForm" (ngSubmit)="guardarTemplate(formTemplate)">
+
       <div class="form-group">
         <label for="nombreT"><i class='bx bx-user'></i> Clase a tomar</label>
         <select id="nombreT" name="nombre" ngModel class="form-control" required>
           <option value="" disabled selected>Selecciona una clase</option>
-          <option value="pesas">Indoor Cycling</option>
-          <option value="crosfit">Crosfit</option>
-          <option value="zumba">Zumba</option>
+          <option *ngFor="let clase of clases" [value]="clase.valor">
+            {{ clase.nombre }}
+          </option>
         </select>
       </div>
+
 
       <div class="form-group">
         <label for="usuarioT"><i class='bx bx-calendar'></i> Día</label>
