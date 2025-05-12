@@ -89,6 +89,34 @@
     }
 }
 
+/* Responsividad para diferentes tamaños de pantalla */
+@media (max-width: 1024px) {
+    .titulo-seccion {
+        font-size: 2.5rem; /* Ajuste de tamaño en pantallas medianas */
+    }
+}
+
+@media (max-width: 768px) {
+    .titulo-seccion {
+        font-size: 2rem; /* Ajuste de tamaño en pantallas más pequeñas */
+    }
+
+    .titulo-seccion::after {
+        width: 80%; /* Hacer la línea de debajo más pequeña en pantallas más pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .titulo-seccion {
+        font-size: 1.6rem; /* Ajuste de tamaño en pantallas muy pequeñas */
+    }
+
+    .titulo-seccion::after {
+        width: 70%; /* Hacer la línea de debajo aún más pequeña en pantallas pequeñas */
+    }
+}
+
+
 /* Botones de control del Carrusel */
 .carousel-btn {
     background-color: rgba(0, 0, 0, 0.5);
