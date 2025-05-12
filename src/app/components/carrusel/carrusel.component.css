@@ -92,27 +92,27 @@
 /* Responsividad para diferentes tamaños de pantalla */
 @media (max-width: 1024px) {
     .titulo-seccion {
-        font-size: 2.5rem; /* Ajuste de tamaño en pantallas medianas */
+        font-size: 2.5rem; 
     }
 }
 
 @media (max-width: 768px) {
     .titulo-seccion {
-        font-size: 2rem; /* Ajuste de tamaño en pantallas más pequeñas */
+        font-size: 2rem;
     }
 
     .titulo-seccion::after {
-        width: 80%; /* Hacer la línea de debajo más pequeña en pantallas más pequeñas */
+        width: 80%; 
     }
 }
 
 @media (max-width: 480px) {
     .titulo-seccion {
-        font-size: 1.6rem; /* Ajuste de tamaño en pantallas muy pequeñas */
+        font-size: 1.6rem; 
     }
 
     .titulo-seccion::after {
-        width: 70%; /* Hacer la línea de debajo aún más pequeña en pantallas pequeñas */
+        width: 70%; 
     }
 }
 
@@ -268,28 +268,28 @@
 /* Ajustes para pantallas más pequeñas */
 @media (max-width: 768px) {
   .carousel-indicators button {
-    width: 8px;  /* Botones un poco más pequeños en pantallas pequeñas */
-    height: 8px; /* Altura proporcional */
-    margin: 0 4px; /* Espaciado más pequeño */
+    width: 8px;  
+    height: 8px; 
+    margin: 0 4px; 
   }
 }
 
 @media (max-width: 480px) {
   .carousel-indicators button {
-    width: 6px;  /* Botones aún más pequeños en pantallas muy pequeñas */
-    height: 6px; /* Altura proporcional */
-    margin: 0 3px; /* Espaciado aún más pequeño */
+    width: 6px;  
+    height: 6px; 
+    margin: 0 3px; 
   }
 }
 
 @media (max-width: 768px) {
   .carousel-indicators {
-    bottom: 5px;  /* Ajustamos la posición de los indicadores */
-    gap: 6px;  /* Menos espacio entre los indicadores */
+    bottom: 5px; 
+    gap: 6px;  
   }
 
   .carousel-indicators button {
-    width: 8px;  /* Botones más pequeños en pantallas pequeñas */
+    width: 8px;  
     height: 8px;
   }
 }
@@ -301,7 +301,7 @@
   }
 
   .carousel-indicators button {
-    width: 6px;  /* Botones aún más pequeños en pantallas muy pequeñas */
+    width: 6px;  
     height: 6px;
   }
 }
