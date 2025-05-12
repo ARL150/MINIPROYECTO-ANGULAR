@@ -72,27 +72,27 @@
           required />
       </div>
 
-<p><strong>Sesiones:</strong> {{ resumen.sesiones > 0 ? resumen.sesiones : 'Sin Sesión' }}</p>
+      <p><strong>Sesiones:</strong> {{ resumen.sesiones > 0 ? resumen.sesiones : 'Sin Sesión' }}</p>
 
-<div class="form-group">
-  <label><i class="fas fa-calendar-check"></i> Número de sesiones</label>
-  <br>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="sesion1" value="1" name="sesiones"
-      [(ngModel)]="checkboxValues[0]" (change)="actualizarSesiones()">
-    <label class="form-check-label" for="sesion1">1</label>
-  </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="sesion2" value="2" name="sesiones"
-      [(ngModel)]="checkboxValues[1]" (change)="actualizarSesiones()">
-    <label class="form-check-label" for="sesion2">2</label>
-  </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="sesion3" value="3" name="sesiones"
-      [(ngModel)]="checkboxValues[2]" (change)="actualizarSesiones()">
-    <label class="form-check-label" for="sesion3">3</label>
-  </div>
-</div>
+      <div class="form-group">
+        <label><i class="fas fa-calendar-check"></i> Número de sesiones</label>
+        <br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="sesion1" value="1" name="sesiones"
+            [(ngModel)]="checkboxValues[0]" (change)="actualizarSesiones()">
+          <label class="form-check-label" for="sesion1">1</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="sesion2" value="2" name="sesiones"
+            [(ngModel)]="checkboxValues[1]" (change)="actualizarSesiones()">
+          <label class="form-check-label" for="sesion2">2</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="sesion3" value="3" name="sesiones"
+            [(ngModel)]="checkboxValues[2]" (change)="actualizarSesiones()">
+          <label class="form-check-label" for="sesion3">3</label>
+        </div>
+      </div>
 
 
       <button type="button" class="btn mt-2 text-white" style="background-color: #ff6f00; border-color: #ff6f00;"
@@ -107,18 +107,13 @@
         <p><strong>Clase:</strong> {{ resumen.nombre }}</p>
         <p><strong>Día:</strong> {{ resumen.usuario }}</p>
         <p><strong>Hora:</strong> {{ resumen.hora }}</p>
-<p><strong>Sesiones:</strong> {{ resumen.sesiones === true ? 'Sesión Activa' : 'Sin Sesión' }}</p>
+        <p><strong>Sesiones:</strong> {{ resumen.sesiones === true ? 'Sesión Activa' : 'Sin Sesión' }}</p>
       </div>
       }
 
 
     </form>
   </div>
-
-
-
-
-
 
 
   <!-- Tabla de sesiones agendadas -->
@@ -147,6 +142,7 @@
             <button class="btn btn-danger btn-sm" (click)="eliminarSesion()">
               <i class='bx bx-trash'></i> Eliminar
             </button>
+
           </td>
         </tr>
       </tbody>

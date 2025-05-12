@@ -20,7 +20,6 @@ export class NavbarComponent implements AfterViewInit, OnInit {
   constructor(private authService: AuthServiceService) {}  
 
   ngOnInit() {
-    // ✅ Nos suscribimos al observable del usuario actual
     this.authService.usuarioActual$.subscribe(usuario => {
       this.usuarioActual = usuario;
     });
