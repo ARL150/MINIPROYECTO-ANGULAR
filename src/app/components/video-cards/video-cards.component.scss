@@ -1,4 +1,3 @@
-
 .video-section {
   background-color: #121212; 
   padding: 2rem;
@@ -24,31 +23,33 @@
 }
 
 .video-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.5rem;
-    padding: 2rem;
-    background-color: #121212; 
-  }
-  
-  .video-card {
-    background-color: #1e1e1e;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(255, 102, 0, 0.3);
-    overflow: hidden;
-    border: 2px solid #ff6600;
-    transition: transform 0.3s ease;
-  
-    iframe {
-      display: block;
-      border: none;
-    }
-  
-    &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 24px rgba(255, 102, 0, 0.5);
-    }
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: #121212;
+}
+
+.video-card {
+  background-color: #1e1e1e;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(255, 102, 0, 0.3);
+  overflow: hidden;
+  border: 2px solid #ff6600;
+  transition: transform 0.3s ease;
+}
+
+.video-card iframe {
+  display: block;
+  border: none;
+  width: 100%;  /* Asegura que el iframe ocupe el 100% del contenedor */
+  height: 100%; /* Asegura que el iframe se ajuste al contenedor */
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(255, 102, 0, 0.5);
+}
 
 $primary-color: #ff6600;
 $hover-color: #e66f00;
@@ -67,12 +68,61 @@ $shadow-color: rgba(0, 0, 0, 0.3);
   box-shadow: 0 4px 8px $shadow-color;
   transition: background-color 0.3s ease, transform 0.2s ease;
   margin-bottom: 20px;
+}
 
-  // Efecto de hover
-  &:hover {
-    background-color: $hover-color;
-    transform: scale(1.05);
+.custom-button:hover {
+  background-color: $hover-color;
+  transform: scale(1.05);
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+  .video-section {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .custom-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .video-grid {
+    padding: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Reduce el tamaño mínimo para pantallas más pequeñas */
+  }
+
+  .video-card iframe {
+    height: 180px; /* Ajusta el alto del iframe en pantallas pequeñas */
   }
 }
 
-  
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .custom-button {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+
+  .video-grid {
+    grid-template-columns: 1fr; /* Acomoda los videos en una sola columna */
+  }
+
+  .video-card iframe {
+    height: 150px; /* Ajusta el alto del iframe en pantallas extra pequeñas */
+  }
+}
