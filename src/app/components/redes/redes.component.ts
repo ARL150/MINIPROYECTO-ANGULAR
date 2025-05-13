@@ -13,11 +13,20 @@ import { NgIf } from '@angular/common';
   styleUrls: ['./redes.component.css']
 })
 export class RedesComponent implements OnInit {
+  
   public socialId: string = "";
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) { 
+  }
 
   ngOnInit(): void {
-    this.socialId = this.route.snapshot.paramMap.get('id')!;
+    this.route.paramMap.subscribe(params => {
+      this.socialId = params.get('id')!;
+
+      const element = document.getElementById('social');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
   }
 }
