@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { NgForm } from '@angular/forms';
 import { Input } from '@angular/core';
+import { Admin } from '../../admin';
+
 
 @Component({
   selector: 'app-form',
@@ -21,13 +23,19 @@ export class FormComponent implements OnInit {
   horaMax = '23:00';
 
   @Input() usuarioActual: string | null = null;
+  
   clases: { valor: string, nombre: string }[] = [
   { valor: 'pesas', nombre: 'Indoor Cycling' },
   { valor: 'crosfit', nombre: 'Crosfit' },
   { valor: 'zumba', nombre: 'Zumba' }
 ];
 
-
+  admins: Admin[] = [
+    { usuario: 'abraham', contrasena: '123' },
+    { usuario: 'pepe', contrasena: '123' },
+    { usuario: 'luis', contrasena: '123' }
+  ];
+  
   checkboxValues = [false, false, false]; 
   sesionesSeleccionadas: number[] = [];   
 
@@ -59,12 +67,6 @@ this.resumen.sesiones = 10;
   localStorage.setItem('sesionesSeleccionadas', JSON.stringify(this.sesionesSeleccionadas));
 }
 
-  
-  admins = [
-    { usuario: 'abraham', contrasena: '123' },
-    { usuario: 'pepe', contrasena: '123' },
-    { usuario: 'luis', contrasena: '123' }
-  ];
 
   @ViewChild('formTemplate') formTemplate!: NgForm;
 
