@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
-  nombre: string = "Jesus David Montero Ayala";
   date: string = "";
   email: string = 'gromfitnesscenter@gmail.com';
   
