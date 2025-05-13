@@ -21,8 +21,6 @@ export class FormComponent implements OnInit {
   horaMax = '23:00';
 
   @Input() usuarioActual: string | null = null;
-
-
   clases: { valor: string, nombre: string }[] = [
   { valor: 'pesas', nombre: 'Indoor Cycling' },
   { valor: 'crosfit', nombre: 'Crosfit' },
